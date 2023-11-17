@@ -1,8 +1,5 @@
-import { Component,OnInit } from '@angular/core';
-import { EVALUATION } from '../models/models';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-
-
 
 @Component({
   selector: 'app-liste-evaluation',
@@ -11,40 +8,37 @@ import Swal from 'sweetalert2';
 })
 export class ListeEvaluationComponent implements OnInit {
 
-  // attributs
-  
-  anneeAcademic:string ="";
-  semestre:string="";
-  classe :string="";
-  date="";
-  matiere :string="";
-  type :string="";
-  
-  // pour les etat d'evaluations
-  etat:number=1;
+  // Attributs
+  anneeAcademic: string = "";
+  semestre: string = "";
+  classe: string = "";
+  date: string = "";
+  matiere: string = "";
+  type: string = "";
+  etat: number = 1;
 
-  // pour la modification d'une evaluation
+  // Pour la modification d'une évaluation
   saveTable!: any[];
   modifierEvaluation: boolean = false;
 
-// pour récuperer les evaluations programmées
-listeEvaluation:any[]=[];
+  // Pour récupérer les évaluations programmées
+  listeEvaluation: any[] = [];
 
- 
+  // Pour définir l'évaluation à modifier
+  evaluationAModifier: any = null;
 
-   // pour vider les champs
-   viderChamps() {
-        
-    this.anneeAcademic ="";
-    this.semestre="";
-    this.classe ="";
-    this.date="";
-    this.matiere ="";
-    this.type ="";
-    }
+  // Méthode pour vider les champs
+  viderChamps() {
+    this.anneeAcademic = "";
+    this.semestre = "";
+    this.classe = "";
+    this.date = "";
+    this.matiere = "";
+    this.type = "";
+  }
 
-      // Méthode pour afficher un sweetalert2 apres vérification 
-  verifierChamps(title:any, text:any, icon:any) {
+  // Méthode pour afficher une alerte après vérification
+  verifierChamps(title: any, text: any, icon: any) {
     Swal.fire({
       title: title,
       text: text,
@@ -52,67 +46,67 @@ listeEvaluation:any[]=[];
     });
   }
 
-ngOnInit() {
-  // recup notre table au niveau du localstorage
-  this.listeEvaluation = JSON.parse(localStorage.getItem("Eval") || '[]');
-  
-}
+  ngOnInit() {
+    // Récupérer notre tableau au niveau du localStorage
+    this.listeEvaluation = JSON.parse(localStorage.getItem("Eval") || '[]');
+  }
 
+  // Méthode pour définir l'évaluation à modifier et afficher le formulaire
+  evaluationModifiee(index: number) {
+    this.evaluationAModifier = this.listeEvaluation[index];
+    this.saveTable = [Object.assign({}, this.evaluationAModifier)]; // Copie de l'évaluation à modifier
+    this.modifierEvaluation = true;
+  }
 
-  // Methode pour modifier une evaluation
-  evaluationModifiee(param: number){
-    this.listeEvaluation.forEach(element => {
-      if (element.idEvaluation == param) {
-        this.saveTable = this.listeEvaluation.filter((ele) => ele.idEvaluation == param);
-        this.modifierEvaluation = !this.modifierEvaluation;
+  // Méthode pour annuler la modification
+  retour() {
+    this.modifierEvaluation = false;
+    this.viderChamps();
+  }
+
+  // Méthode pour enregistrer les modifications
+  enregistrerModification() {
+    if (this.evaluationAModifier) {
+      // Met à jour l'évaluation dans saveTable (à partir du formulaire de modification)
+      this.saveTable.forEach(modifiedItem => {
+        this.evaluationAModifier.anneeAcademic = modifiedItem.anneeAcademic;
+        this.evaluationAModifier.semestre = modifiedItem.semestre;
+        this.evaluationAModifier.classe = modifiedItem.classe;
+        this.evaluationAModifier.date = modifiedItem.date;
+        this.evaluationAModifier.matiere = modifiedItem.matiere;
+        this.evaluationAModifier.type = modifiedItem.type;
+      });
+
+      // Met à jour le tableau dans le localStorage
+      localStorage.setItem("Eval", JSON.stringify(this.listeEvaluation));
+
+      // Masque le formulaire de modification
+      this.modifierEvaluation = false;
+
+      // Vide les champs après enregistrement
+      this.viderChamps();
+    }
+  }
+
+  // Méthode pour archiver une évaluation
+  archiverEvaluation(index: number) {
+    const evaluationAArchiver = this.listeEvaluation[index];
+
+    Swal.fire({
+      title: "Êtes-vous sûr?",
+      text: "Vous allez archiver cette évaluation",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui, archiver!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        evaluationAArchiver.etat = 0; // Archiver l'évaluation
+        // Met à jour le tableau dans le localStorage
+        localStorage.setItem("Eval", JSON.stringify(this.listeEvaluation));
+        this.verifierChamps("Évaluation archivée!", "", "success");
       }
     });
-    
-    // On met à jour le tableau qui est stocké dans le localStorage 
-    localStorage.setItem("eval", JSON.stringify(this.tabEvaluation));
-    // this.verifierChamps("Mofication réussie!", "", "success"); 
-    this.viderChamps();
-  } 
-
-  retour() {
-    this.modifierEvaluation = !this.modifierEvaluation;
   }
-
-  tabEvaluation(tabEvaluation: any): string {
-    throw new Error('Method not implemented.');
-  }
-
-
-// pour archiver une evaluation
-
-ArchiverEvaluation(paramArchive:any){
-
-  this.listeEvaluation.forEach(element => {
-    if (element.idEvaluation == paramArchive) {
-      this.saveTable = this.listeEvaluation.filter((ele) => ele.idEvaluation == paramArchive);
-    }
-  });
-
-  Swal.fire({
-    title: "Etes-vous sur???",
-    text: "Vous allez supprimer le contact",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Oui, je supprime!"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      paramArchive.etatContact = 0;
-      // On met à jour le tableau qui est stocké dans le localStorage 
-      localStorage.setItem("eval", JSON.stringify(this.tabEvaluation));
-      this.verifierChamps("Evaluaation Archivée!", "", "success");     
-      
-    }
-  });
-  // alert(paramContact.etatContact);
-  
-}
-
-
 }
