@@ -1,0 +1,29 @@
+
+<table class="table container">
+    <thead>
+      <tr>
+        <th scope="col">evaluation</th>
+        <th scope="col">annee Academic</th>
+        <th scope="col">classe</th>
+        <th scope="col">matiere</th>
+        <th scope="col">type</th>
+        <th scope="col">date</th>
+        <th scope="col">Etat</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor=" let elementEvaluation of listeEvaluation" >
+      <tr>
+        <th scope="row"> {{elementEvaluation. idEvaluation}}</th>
+        <td >{{elementEvaluation. anneeAcademic}}</td>
+        <td > {{elementEvaluation. classe}}</td>
+        <td > {{elementEvaluation. matiere}}</td>
+        <td >{{elementEvaluation. type}}</td>
+        <td > {{elementEvaluation.date}}</td>   
+        <td > {{elementEvaluation. etat}}</td>  
+        <button class="btn btn-warning">Modifier</button> 
+        <button class="btn btn-success">Archiver</button> 
+      </tr>
+      
+    </tbody>
+  </table>
