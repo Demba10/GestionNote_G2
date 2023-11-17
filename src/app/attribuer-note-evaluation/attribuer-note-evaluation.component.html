@@ -1,1 +1,35 @@
-<p>attribuer-note-evaluation works!</p>
+      
+<!-- attribuer note -->
+<div class="secondCard m-5">
+    <div class="sectionNotes m-5">
+      <h4 class="mt-5 p-2">Attribuer des Notes</h4>
+      <form>
+          <label class="mt-4 fs-4" for="evaluation ">Évaluation : </label>&nbsp; &nbsp;
+        <!-- <input type="date" placeholder="Date" required />&nbsp; &nbsp; -->
+          <select id="evaluation" name="evaluationSelect6"  >
+              <option value="evaluation1">Evaluation 1</option>
+              <option value="evaluation2">Evaluation 2</option>
+              <option value="evaluation3">Evaluation 3</option>
+          </select>&nbsp; &nbsp;
+          
+          <table class="mt-5">
+              <thead>
+                  <tr>
+                      <th>Apprenant</th>
+                      <th>Note</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Apprenant 1</td>
+                      <td>
+                          <input type="number" name="note1" >
+                      </td>
+                  </tr>    
+
+              </tbody>
+          </table>
+          <button  type="button" class="btn btn-primary mb-5 mt-5">Attribuer les Notes</button>
+    </form>
+    </div>
+</div>

@@ -73,6 +73,19 @@ export class ProgrammeEvaluationComponent implements OnInit{
         icon: icon
       });
     }
+
+
+    champsRemplis(): boolean {
+      return (
+        this.date !== "" &&
+        this.anneeAcademic !== "" &&
+        this.semestre !== "" &&
+        this.classe !== "" &&
+        this.matiere !== "" &&
+        this.type !== ""
+      );
+    }
+    
   
       annulerProgrammation(){
         Swal.fire({
@@ -96,19 +109,20 @@ export class ProgrammeEvaluationComponent implements OnInit{
         // event.preventDefault();
         
         
-        if (this.date == "" || this.anneeAcademic == "" || this.semestre == "" || this.classe == "" || this.matiere== "" || this.type == "" ) {
+        if (this.date === "" || this.anneeAcademic === "" || this.semestre === "" || this.classe === "" || this.matiere === "" || this.type === "") {
+          // Affiche l'alerte d'erreur si au moins un champ est vide
           Swal.fire({
             icon: 'error',
-            title: 'Sorry',
-            text: 'Veuillez saisir tous les champs',
-          })
-        } else(this.date != "" || this.anneeAcademic != "" || this.semestre != "" || this.classe != "" || this.matiere!= "" || this.type != "" )
-         {
+            title: 'Erreur',
+            text: 'Veuillez remplir tous les champs',
+          });
+        } else {
+          // Affiche l'alerte de succès si tous les champs sont remplis
           Swal.fire({
             icon: 'success',
-            title: 'Thanks',
+            title: 'Succès',
             text: 'Programmation faite avec succès',
-          })
+          });
           console.log(this.date);
   
   

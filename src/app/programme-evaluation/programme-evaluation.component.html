@@ -12,7 +12,7 @@
               <div class="column">
                 <div class="select-box">
                   <select name="select1"  [(ngModel)]="anneeAcademic">
-                    <option value="choixAnnee">2023-2024</option>
+                    <option value="2023-2024">2023-2024</option>
                   </select>
                 </div>
               </div>
@@ -72,7 +72,7 @@
                 </div>
               </div>       
               <div class=" text-center d-flex">
-                <button type="submit" class="btn btn-primary me-3"  routerLink="/listeEvaluation" (click)="validationChamps()" >Programmer</button>
+                <button type="submit" class="btn btn-primary me-3" routerLink="/listeEvaluation" (click)="validationChamps()" [disabled]="!champsRemplis()">Programmer</button>
                 <button type="button" class="btn btn-danger " (click)="annulerProgrammation()">Annuler</button>
 
             </div>
