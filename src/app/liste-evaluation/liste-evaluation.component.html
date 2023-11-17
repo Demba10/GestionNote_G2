@@ -1,0 +1,143 @@
+<div class="container mt-3 bg-primary text-light w-50 ">
+  <form *ngIf="showForm1" (ngSubmit)="onSubmitForm1()">
+    <h2 class="text-center">Programme d'évaluation</h2>
+    <div class="dat mt-3">
+      <h6>Année Scolaire: 2023-2024</h6>
+    </div>
+    <div class="classe">
+      <h5>Classe:</h5>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>...</option>
+        <option value="1">Seconde</option>
+        <option value="2">Première</option>
+        <option value="1">Terminal</option>
+      </select>
+      <div class="semestre">
+        <h5>Semestre:</h5>
+      </div>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>...</option>
+        <option value="1">Semestre 1</option>
+        <option value="2">Semestre 2</option>
+      </select>
+      <h6>Type:</h6>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>...</option>
+        <option value="1">Devoir</option>
+        <option value="2">Examen</option>
+      </select>
+      <h6>Matières:</h6>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+        <option selected>...</option>
+        <option value="1">Maths</option>
+        <option value="2">Phisique et Chimie</option>
+        <option value="1">Histoire-Geo</option>
+        <option value="2">Français</option>
+        <option value="1">Philosophie</option>
+        <option value="1">Anglais</option>
+        <option value="2">Espagnol</option>
+        <option value="2">EPS</option>
+      </select>
+      <h6>Etat:</h6>
+      <div class="Etat">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option selected>...</option>
+          <option value="1">En Cours</option>
+          <option value="2">Faite</option>
+          <option value="2">Rapportée</option>
+        </select>
+      </div>
+      <div class="dat">
+        <input type="date" name="" id="">
+      </div>
+      <button type="button" class="btn btn-primary btn-lg mt-5 bg-secondary" (click)="ajouterEvaluation()">Ajouter</button>
+      <button type="button" class="btn btn-primary btn-lg mt-5 ms-5 bg-secondary" (click)="toggleForms()" >Enregistrer</button>
+      <button type="button" class="btn btn-danger btn-lg ms-3 mt-5 ms-5">Annuler</button>
+
+    </div>
+  </form>
+  <form *ngIf="!showForm1" (ngSubmit)="onSubmitForm2()">
+    <button class="retoure"><i class="bi bi-arrow-left-square-fill"></i></button>
+    <form>
+      <label for="search">Rechercher:</label>
+      <input type="text" id="search" name="search" oninput="filterEvaluations()"
+        placeholder="Entrez un terme de recherche">
+    </form>
+    <h2 class="text-center">Liste d'évaluation</h2>
+    <div class="listes">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">2024-2024 :</th>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Matières</th>
+            <th scope="col">Etat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="list">
+            <td>Semestre 2</td>
+            <td>15-05-2023</td>
+            <td>Examen Blanc</td>
+            <td>Maths</td>
+            <td class="" id="actions">
+              <button class="btn btn-danger w-100">Rapportée</button>
+
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr id="list">
+            <td>Semestre 2</td>
+            <td>15-05-2023</td>
+            <td>Devoir</td>
+            <td>Maths</td>
+            <td class="" id="actions">
+              <button class="btn btn-warning w-100">En cours</button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr id="list">
+            <td>Semestre 2</td>
+            <td>10-06-2023</td>
+            <td>Devoir</td>
+            <td>Maths</td>
+            <td class="" id="actions">
+              <button class="btn btn-warning w-100">En cours</button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr id="list">
+            <td>Semestre 1</td>
+            <td>28-11-2023</td>
+            <td>Devoir</td>
+            <td>Maths</td>
+            <td class="" id="actions">
+              <button class="btn btn-primary w-100">Faite</button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr id="list">
+            <td>Semestre 1</td>
+            <td>20-11-2023</td>
+            <td>Examen Blanc</td>
+            <td>Maths</td>
+            <td class="" id="actions">
+              <button class="btn btn-primary w-100">Faite</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <!-- Afficher ou manipuler la liste -->
+      <button >Enregistrer la liste </button>
+    </div>
+  </form>
+</div>
+
+
