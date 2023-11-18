@@ -64,10 +64,8 @@ export class ListeEvaluationComponent implements OnInit {
     this.viderChamps();
   }
 
-  // Méthode pour enregistrer les modifications
   enregistrerModification() {
     if (this.evaluationAModifier) {
-      // Met à jour l'évaluation dans saveTable (à partir du formulaire de modification)
       this.saveTable.forEach(modifiedItem => {
         this.evaluationAModifier.anneeAcademic = modifiedItem.anneeAcademic;
         this.evaluationAModifier.semestre = modifiedItem.semestre;
@@ -75,15 +73,13 @@ export class ListeEvaluationComponent implements OnInit {
         this.evaluationAModifier.date = modifiedItem.date;
         this.evaluationAModifier.matiere = modifiedItem.matiere;
         this.evaluationAModifier.type = modifiedItem.type;
+        this.evaluationAModifier.etat = modifiedItem.etat;
       });
-
-      // Met à jour le tableau dans le localStorage
+      
       localStorage.setItem("Eval", JSON.stringify(this.listeEvaluation));
-
-      // Masque le formulaire de modification
+     
       this.modifierEvaluation = false;
-
-      // Vide les champs après enregistrement
+  
       this.viderChamps();
     }
   }

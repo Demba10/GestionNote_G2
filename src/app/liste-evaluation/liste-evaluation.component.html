@@ -97,9 +97,21 @@
                 <option value="Devoir">Devoir</option>
               </select>
             </div>
+            
           </div>
         </div>
-
+        <div class="input-box">
+          <label>État</label>
+          <div class="column">
+            <div class="select-box">
+              <select name="select6" [(ngModel)]="item.etat">
+                <option value="en cours">En cours</option>
+                <option value="annulé">Annulé</option>
+                <option value="Terminé">Terminé</option>
+              </select> 
+            </div>
+          </div>
+        </div>
         <div class="text-center d-flex">
           <button type="button" class="btnlast btn btn-primary me-3" (click)="enregistrerModification()">Enregistrer</button>
           <button type="button" class="btnlast btn btn-danger" (click)="retour()">Annuler</button>

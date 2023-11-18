@@ -36,20 +36,20 @@
         
 
         <li>
-          <a href="#">
+          <a routerLink="/liste-evaluations">
             <span class="icon">
               <i class="fa-solid fa-book"></i>
             </span>
-            <span class="title text-white fw-bold">Liste Evaluations </span>
+            <span class="title text-white fw-bold">Liste Evaluations</span>
           </a>
         </li>
 
         <li>
-          <a href="#">
+          <a routerLink="/Programmer">
             <span class="icon">
-              <i class=" fa-solid fas fa-duotone fa-book"></i>
+              <i class="fa-solid fa-book"></i>
             </span>
-            <span routerLink="Programmer" class="title text-white fw-bold">Programmer Evaluation</span>
+            <span class="title text-white fw-bold">Programmer une evaluation</span>
           </a>
         </li>
 
@@ -120,46 +120,13 @@
 
       </div>
 
-      <button class="btn btn-primary" routerLink="Programmer">Programmer une Evaluaion</button>
+      <button class="btn btn-primary" routerLink="Programmer">Programmer une Evaluaion</button>&nbsp; &nbsp; &nbsp;
+      <button class="btn btn-primary" routerLink="/Attribuer-note">Attribuer note</button>
       
 
 
 
-      
-<!-- attribuer note -->
-      <div class="secondCard m-5">
-        <div class="sectionNotes m-5">
-          <h4 class="mt-5 p-2">Attribuer des Notes</h4>
-          <form>
-              <label class="mt-4 fs-4" for="evaluation ">Évaluation : </label>&nbsp; &nbsp;
-            <!-- <input type="date" placeholder="Date" required />&nbsp; &nbsp; -->
-              <select id="evaluation" name="evaluationSelect6"  >
-                  <option value="evaluation1">Evaluation 1</option>
-                  <option value="evaluation2">Evaluation 2</option>
-                  <option value="evaluation3">Evaluation 3</option>
-              </select>&nbsp; &nbsp;
-              
-              <table class="mt-5">
-                  <thead>
-                      <tr>
-                          <th>Apprenant</th>
-                          <th>Note</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>Apprenant 1</td>
-                          <td>
-                              <input type="number" name="note1" >
-                          </td>
-                      </tr>    
-    
-                  </tbody>
-              </table>
-              <button  type="button" class="btn btn-primary mb-5 mt-5">Attribuer les Notes</button>
-        </form>
-        </div>
-    </div>
+
   </div>
 </div>
   
