@@ -1,49 +1,41 @@
-// ... autres imports
-import { Component } from '@angular/core';
-import { Apprenant } from '../models/apprenant.model'; //  importation du modèle d'apprenant
+import { Component, OnInit } from '@angular/core';
+import { Apprenant } from '../models/apprenant.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-attribuer-note-evaluation',
   templateUrl: './attribuer-note-evaluation.component.html',
   styleUrls: ['./attribuer-note-evaluation.component.scss']
 })
-export class AttribuerNoteEvaluationComponent {
-  evaluations = ['evaluation1', 'evaluation2', 'evaluation3'];
-  selectedEvaluation: string = "";
-  note1: number | undefined;
+export class AttribuerNoteEvaluationComponent implements OnInit {
+  listeEvaluation: any[] = [];
+  apprenants: Apprenant[] = [];
+  listeApprenants: Apprenant[] = [];
+  selectedEvaluationId: number = -1; // Utilisation d'une valeur par défaut
+  notes: { apprenant: Apprenant, note: number }[] = [];
+  filteredApprenants: Apprenant[] = [];
 
-  // Ajoutez une liste d'apprenants pour chaque évaluation
-  apprenantsParEvaluation: { [key: string]: Apprenant[] } = {
-    'evaluation1': [
-      { nom: 'Apprenant 1', note: undefined },
-      { nom: 'Apprenant 2', note: undefined },
-     
-    ],
-    'evaluation2': [
-      { nom: 'Apprenant 3', note: undefined },
-      { nom: 'Apprenant 4', note: undefined },
-     
-    ],
-    'evaluation3': [
-      { nom: 'Apprenant 5', note: undefined },
-      { nom: 'Apprenant 6', note: undefined },
-     
-    ],
-  };
+  constructor(private router: Router) {}
 
-  // ...
+  ngOnInit() {
+    this.listeEvaluation = JSON.parse(localStorage.getItem("Eval") || '[]');
+    this.listeApprenants = JSON.parse(localStorage.getItem('apprenants') || '[]');
+  }
 
-  // Méthode pour attribuer les notes
+  onSelectEvaluation() {
+    if (this.selectedEvaluationId !== -1) {
+      this.notes = this.listeApprenants
+        .filter(apprenant => apprenant.evaluationId === this.selectedEvaluationId)
+        .map(apprenant => ({ apprenant, note: 0 })); // Initialisez les notes à 0
+    } else {
+      console.error('selectedEvaluationId est -1. Impossible de filtrer les apprenants.');
+    }
+  }
+
   attribuerNotes() {
-    // Récupérez la liste des apprenants en fonction de l'évaluation sélectionnée
-    const apprenants = this.apprenantsParEvaluation[this.selectedEvaluation];
-
-    // Attribuez les notes aux apprenants
-    apprenants.forEach(apprenant => {
-      apprenant.note = this.note1;
-    });
-
+    // Logique pour attribuer les notes
+    console.log('Attribution des notes :', this.filteredApprenants);
     // Vous pouvez maintenant faire ce que vous voulez avec les notes attribuées
-    console.log('Notes attribuées :', apprenants);
+    // Par exemple, les envoyer à un service ou les stocker localement, etc.
   }
 }

@@ -1,0 +1,91 @@
+<!-- add-apprenant.component.html -->
+<div class="alert alert-primary text-center" role="alert">
+    Ajout d'un apprenant
+  </div>
+  
+  <div class="formulaire">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder=""
+        [(ngModel)]="matricule"
+      />
+      <label for="floatingInput">Matricule</label>
+    </div>
+  
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder=""
+        [(ngModel)]="prenom"
+      />
+      <label for="floatingInput">Prenom</label>
+    </div>
+  
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder=""
+        [(ngModel)]="nom"
+      />
+      <label for="floatingInput">Nom</label>
+    </div>
+  
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder=""
+        [(ngModel)]="email"
+      />
+      <label for="floatingInput">Email</label>
+    </div>
+  
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder=""
+        [(ngModel)]="numero"
+      />
+      <label for="floatingInput">Numero</label>
+    </div>
+  
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder=""
+        [(ngModel)]="photo"
+      />
+      <label for="floatingInput">Photo (URL)</label>
+    </div>
+  
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      [(ngModel)]="classe"
+    >
+      <option value="">-- Sélectionnez une classe --</option>
+      <option [value]="classe.nom" *ngFor="let classe of classesActives">
+        {{ classe.nom }}
+      </option>
+    </select>
+  
+    <div class="text-center d-flex justify-content-around mt-4">
+      <button class="btn btn-danger w-25" (click)="resetForm()">Annuler</button>
+      <button class="btn btn-primary w-25" (click)="verifierFormAjout()">
+        Ajouter
+      </button>
+    </div>
+  </div>
+  

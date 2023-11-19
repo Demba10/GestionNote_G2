@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { ProgrammeEvaluationComponent } from './programme-evaluation/programme-evaluation.component';
 import { AttribuerNoteEvaluationComponent } from './attribuer-note-evaluation/attribuer-note-evaluation.component';
 import { ListeEvaluationComponent } from './liste-evaluation/liste-evaluation.component';
+import { AddApprenantComponent } from './add-apprenant/add-apprenant.component';
+import { FilterApprenantsPipe } from './filter-apprenants.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ListeEvaluationComponent } from './liste-evaluation/liste-evaluation.co
     DasboardProfesseurComponent,
     ProgrammeEvaluationComponent,
     AttribuerNoteEvaluationComponent,
-    ListeEvaluationComponent
+    ListeEvaluationComponent,
+    AddApprenantComponent,
+    FilterApprenantsPipe,
   ],
   imports: [
     BrowserModule,
