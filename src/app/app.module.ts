@@ -5,11 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { AddNotesComponent } from './modules/formateur/add-notes/add-notes.component';
+import { DashboardComponent } from './modules/formateur/dashboard/dashboard.component';
+import { ProgrammeEvalComponent } from './modules/formateur/programme-eval/programme-eval.component';
+import { ListEvalComponent } from './modules/formateur/list-eval/list-eval.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AddNotesComponent,
+    DashboardComponent,
+    ProgrammeEvalComponent,
+    ListEvalComponent
   ],
   imports: [
     BrowserModule,

@@ -8,10 +8,11 @@ export class Apprenant {
   public classe:String="";
   public pass:String="";
   public photo:String = "";
-  public etat:String = "";
+  public etat: String = "";
+  public note?: string[];
 
 
-  constructor(matricule:String,nom:String,prenom:String,email:String,numero:String,classe:String,pass:String,id:number,photo:String,etat:String) {
+  constructor(matricule:String,nom:String,prenom:String,email:String,numero:String,classe:String,pass:String,id:number,photo:String,etat:String, note?:string[]) {
     this.id=id;
     this.matricule=matricule;
     this.nom=nom;
@@ -21,6 +22,7 @@ export class Apprenant {
     this.classe=classe;
     this.pass=pass;
     this.photo=photo;
-    this.etat=etat;
+    this.etat = etat;
+    this.note = note;
   }
 }

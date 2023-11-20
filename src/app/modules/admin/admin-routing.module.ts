@@ -19,6 +19,9 @@ const routes: Routes = [
   {
     path:'',component:AdministrateurComponent,children:[
       {
+        path: '', component: StattistiqueComponent
+      },
+      {
         path:'addApprenant',component:AddApprenantComponent
       },
       {
