@@ -5,3 +5,24 @@
 {
   --bgcolor:#3b71ca;
 }
+.btn-danger {
+  background-color: #e91e63;
+}
+.login-btn {
+  background-color: black !important;
+}
+.dash-contanier {
+  display: flex;
+}
+
+.dash-contanier .left {
+  width: max-content !important;
+}
+
+.dash-contanier .right {
+  height: 100vh;
+  // background-color: red;
+  width: 100%;
+  padding: 50px;
+  overflow-y: auto;
+}

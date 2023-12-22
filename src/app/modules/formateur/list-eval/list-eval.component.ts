@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -44,6 +45,8 @@ export class ListEvalComponent implements OnInit {
       icon: icon
     });
   }
+
+  constructor(private router: Router){}
 
   ngOnInit() {
     // Récupérer notre tableau au niveau du localStorage
@@ -103,5 +106,9 @@ export class ListEvalComponent implements OnInit {
         this.verifierChamps("Évaluation archivée!", "", "success");
       }
     });
+  }
+
+  eval() {
+    this.router.navigate(['formateur/evaluation'])
   }
 }

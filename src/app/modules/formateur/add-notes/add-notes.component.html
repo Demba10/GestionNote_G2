@@ -1,9 +1,8 @@
 <!-- attribuer-note-evaluation.component.html -->
 
-<div class="alert alert-primary text-center p-3" role="alert">
+<!-- <div class="alert alert-primary text-center p-3" role="alert">
     Ajout de notes
 </div>
-
 <div class="secondCard m-5">
     <div class="sectionNotes m-5">
         <h4 class="mt-5 p-2">Attribuer des Notes</h4>
@@ -37,5 +36,94 @@
             <button type="button" class="btn btn-primary mb-5 mt-5" (click)="attribuerNotes()">Attribuer les
                 Notes</button>
         </form>
+    </div>
+</div> -->
+<div class="main">
+    <div class="liste alert alert-primary text-center p-3 mx-2 text-white" role="alert">
+        Listes des évaluations
+    </div>
+    <div class="header-eval mx-2 my-3 d-flex gap-3">
+        <select class="form-select" aria-label="Default select example" style="height: 40px;" (change)="onSelectEvaluation()" [(ngModel)]="idEvalCurrent">
+            <option value="0">-- selectionnez une evaluation --</option>
+            <option [value]="elementEvaluation.idEvaluation" *ngFor="let elementEvaluation of listeEvaluation" [value]="elementEvaluation.idEvaluation">
+                {{elementEvaluation.type}} - {{elementEvaluation.matiere}} - {{elementEvaluation.classe}} -{{elementEvaluation.date | date:'fullDate'}}
+            </option>
+        </select>
+        <!-- <div class="input-group flex-nowrap w-25">
+            <input type="number" class="form-control" placeholder="Notes" aria-label="Username"
+                aria-describedby="addon-wrapping">
+        </div> -->
+        <!-- <button type="button" class="btn btn-primary w-50" style="height: 40px;">APPRENANT</button> -->
+    </div>
+    <div class="container bootstrap snippets bootdey">
+        <div class="">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-info panel-shadow">
+                        <div class="panel-body row">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nom complet</th>
+                                            <th>Matricule</th>
+                                            <th>Note</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of listeApprenants; let i = index">
+                                            <td><span class="ms-3"> {{i+1}} </span></td>
+                                            <td><strong class="ms-3">{{item.prenom}} {{item.nom}}</strong></td>
+                                            <td><strong class="ms-3"> {{item.matricule}} </strong></td>
+                                            <td *ngIf="notes[i] && notes[i].note > -1"><strong class="ms-3"> {{notes[i].note}} </strong></td>
+                                            <td *ngIf="!notes[i] || notes[i].note==-1"><strong class="ms-3"> -- </strong></td>
+    
+                                            <td *ngIf="!notes[i] || notes[i].note==-1"><strong class="ms-3"> <button type="button" class="btn btn-success m-0 px-2 py-1" style="font-size: .7em;" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop" (click)="itemAN(item.id)">Noter</button> </strong></td>
+                                            <td *ngIf="notes[i] && notes[i].note > -1" class="">
+                                                <strong class="ms-3 d-flex gap-2"> 
+                                                    <button type="button" class="btn btn-warning m-0 px-2 py-1" style="font-size: .7em;" data-bs-toggle="modal"
+                                                            data-bs-target="#staticBackdrop" (click)="modAN(i)">Modifier
+                                                    </button> 
+                                                    <button type="button" class="btn btn-danger m-0 px-2 py-1" style="font-size: .7em;" (click)="supAN(i)">Supprimer
+                                                    </button> 
+                                                </strong>
+                                            </td>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"> {{baseText}} {{nameAN | uppercase}} </h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="input-group mb-3">
+                                                                <input type="number" class="form-control" placeholder="Note" aria-label="Username"
+                                                                    aria-describedby="basic-addon1" [(ngModel)]="note">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="attribuerNotes()">Valider</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-5">
+                        <button type="button" class="last-btn btn btn-danger" (click)="attribuerNotes()">Annuler</button>
+                        <button type="button" class="last-btn btn btn-success" (click)="attribuerNotes()">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

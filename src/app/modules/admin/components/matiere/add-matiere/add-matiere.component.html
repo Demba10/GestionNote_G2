@@ -33,7 +33,7 @@
                     <input type="text" class="form-control" id="floatingInput" placeholder="" [(ngModel)]="libelle" />
                     <label for="floatingInput">matiere</label>
                 </div>
-                <div class="text-center d-flex justify-content-around mt-4">
+                <div class="text-center d-flex justify-content-center gap-5 mt-4">
                     <button class="btn btn-danger w-25">Annuler</button>
                     <button class="btn btn-primary w-25" (click)="addMatiere()">
                         <!-- routerLink="../listApprenant" -->
@@ -46,7 +46,7 @@
                     <input type="text" class="form-control-edit form-control" id="floatingInput" *ngFor="let item of matiereEdit" placeholder="" [(ngModel)]="item.libelle" />
                     <label for="floatingInput">matiere</label>
                 </div>
-                <div class="text-center d-flex justify-content-around mt-4">
+                <div class="text-center d-flex justify-content-center gap-5 mt-4">
                     <button class="btn btn-danger w-25" (click)="resetForm()">Annuler</button>
                     <button class="btn btn-primary w-25" (click)="addMatiere()">
                         <!-- routerLink="../listApprenant" -->

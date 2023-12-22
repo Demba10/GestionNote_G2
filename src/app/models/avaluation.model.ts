@@ -8,4 +8,6 @@ export class Evaluation {
     matiere: string = "";
     type: string = "";
     etat: string = "";
+    isactive?: boolean; 
+    idProf?: number
 }

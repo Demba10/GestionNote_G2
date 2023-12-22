@@ -23,6 +23,9 @@ export class AddClasseComponent {
   ngOnInit(): void {
 
   }
+  routerRedirect() {
+    this.router.navigate(['admin/listClasse']);
+  }
 
   // la fonction qui verifie les veleurs saisies au niveau des champs
   verifierFormAjout() {

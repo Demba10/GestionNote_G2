@@ -308,3 +308,17 @@ th {
         left: initial;
     }
 }
+
+.list-btn {
+    font-size: 0.7em;
+    padding: 4px 6px;
+}
+
+.list-btn:nth-child(3) {
+    margin-top: 30px !important;
+}
+
+.main {
+    position: relative;
+    top: 40px;
+}

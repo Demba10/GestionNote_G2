@@ -9,6 +9,7 @@ export class Professeur {
         public mail: string,
         public tel: string,
         public classes: string,
-        public etat?: boolean
+        public etat?: boolean,
+        public isAuth?: boolean
     ) { }
 }

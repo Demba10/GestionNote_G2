@@ -78,11 +78,9 @@
     </option>
   </select>
 
-  <div class="text-center d-flex justify-content-around mt-4">
+  <div class="text-center d-flex justify-content-between mt-4">
     <button class="btn btn-danger w-25" (click)="resetForm()">Annuler</button>
-    <button class="btn btn-primary w-25" (click)="verifierFormAjout()">
-      <!-- routerLink="../listApprenant" -->
-      Ajouter
-    </button>
+    <button class="btn btn-danger w-25" routerLink="admin/listApprenant" >Voir la liste</button>
+    <button class="btn btn-primary w-25" (click)="verifierFormAjout()">Ajouter</button>
   </div>
 </div>

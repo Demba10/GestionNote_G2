@@ -17,14 +17,19 @@ export class ProgrammeEvalComponent implements OnInit {
   matiere: string = "";
   type: string = "";
   etat: number = 1;
+  isactive!: boolean;
+  idCurrent: any;
 
   // declaration du tableau d'Evaluation
   pourEvaluation: Evaluation[] = [];
 
   // notre tableau d'Evaluation récupérée à partir du localstaorage
   tabEvaluation: any;
+  taApprenants: any;
+  taMatiere: any;
 
   idLastEvaluation: number = 0;
+  taClasses: any;
 
   // Définition du constructeur
   constructor(private route: ActivatedRoute, private router: Router) { }
@@ -36,6 +41,9 @@ export class ProgrammeEvalComponent implements OnInit {
     }
     // renvoie un tableau de valeur ou un tableau vide
     this.tabEvaluation = JSON.parse(localStorage.getItem("Eval") || '[]');
+    this.taClasses = JSON.parse(localStorage.getItem("classes") || '[]');
+    this.taMatiere = JSON.parse(localStorage.getItem("matiere") || '[]');
+    this.idCurrent = JSON.parse(localStorage.getItem("idCurrent") || '[]');
 
     // on verifie si le tableau n'est pas vide
     if (this.tabEvaluation.length != 0) {
@@ -45,6 +53,9 @@ export class ProgrammeEvalComponent implements OnInit {
     console.log(this.idLastEvaluation);
   }
 
+  redirect() {
+    this.router.navigate(['formateur/listevaluation'])
+  }
   // pour vider les champs
   viderChamps() {
     this.anneeAcademic = "";
@@ -116,8 +127,10 @@ export class ProgrammeEvalComponent implements OnInit {
         date: this.date,
         matiere: this.matiere,
         type: this.type,
+        isactive: this.isactive,
+        idProf: this.idCurrent
       };
-
+      
       // on cree l'Evaluation
       this.tabEvaluation.push(whoProgramme);
       console.log(this.tabEvaluation);

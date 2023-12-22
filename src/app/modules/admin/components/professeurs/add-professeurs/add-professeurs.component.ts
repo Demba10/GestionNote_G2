@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Professeur } from 'src/app/models/professeurs';
 import Swal from 'sweetalert2';
 
@@ -38,6 +39,11 @@ export class AddProfesseursComponent {
     });
   }
 
+  constructor(private router: Router){}
+
+  listerProf() {
+    this.router.navigate(['admin/listProfesseur'])
+  }
   viderChamps() {
     this.image = '';
     this.prenom = '';

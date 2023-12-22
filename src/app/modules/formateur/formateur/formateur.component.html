@@ -1,45 +1,72 @@
 <div class="dash-contanier">
     <div class="left">
-        <div class="sidebar">
-            <div class="logo">
-                <!-- <span class=""> GestionNoteLogo </span> -->
-                <img src="assets/Capture-removebg-preview.png" alt="" />
+        <aside
+            class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
+            id="sidenav-main">
+            <div class="sidenav-header">
+                <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                    aria-hidden="true" id="iconSidenav"></i>
+                <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
+                    target="_blank">
+                    <span class="ms-1 font-weight-bold text-white">Shool Job</span>
+                </a>
             </div>
-        
-            <div class="sidebar-items">
-                <div class="dashboard">
-                    <span routerLink="statistique">
-                        <i class="bi bi-grid-1x2-fill"></i> Dashboard
-                    </span>
-        
-                </div>
-                <div class="sidebar-item">
-                    <span>
-                        <i class="fa-solid fa-chalkboard-user"></i> Gestion Notes
-                    </span>
-                    <div class="link-bloc">
-                        <span id="link" routerLink="addnote">Ajouter</span> <br />
-                        <span id="link" routerLink="listProfesseur">Lister</span>
-                    </div>
-                </div>
-                <div class="sidebar-item">
-                    <span>
-                        <i class="fa-solid fa-graduation-cap"></i> Gestion Evaluations
-                    </span>
-                    <div class="link-bloc">
-                        <span id="link" routerLink="evaluation">Ajouter</span> <br />
-                        <span id="link" routerLink="listevaluation">Lister</span>
-                    </div>
-                </div>
+            <hr class="horizontal light mt-0 mb-2">
+            <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white bg-gradient-primary" href="../pages/dashboard.html">
+                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="material-icons opacity-10">dashboard</i>
+                            </div>
+                            <span class="nav-link-text ms-1">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white " routerLink="addnote">
+                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="material-icons opacity-10">table_view</i>
+                            </div>
+                            <span class="nav-link-text ms-1">Notes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white " routerLink="evaluation">
+                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="material-icons opacity-10">receipt_long</i>
+                            </div>
+                            <span class="nav-link-text ms-1">Evalation</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="logout">
-                <span href="login"><i class="bi bi-box-arrow-left"></i> Déconnexion</span>
-            </div>
-        </div>
+        </aside>
     </div>
     <div class="right">
-        <!-- <app-stattistique></app-stattistique> -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+            data-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <h6 class="dashboard font-weight-bolder mb-0">Dashboard</h6>
+                </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                        <div class="input-group input-group-outline">
+                            <label class="form-label"></label>
+                            <input type="text" class="form-control" placeholder="Rechercher">
+                        </div>
+                    </div>
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-flex align-items-center">
+                            <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+                                <i class="fa fa-user me-sm-1"></i>
+                                <span class="d-sm-inline d-none">{{userAuth}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <router-outlet></router-outlet>
-        <!-- <app-test></app-test> -->
     </div>
 </div>

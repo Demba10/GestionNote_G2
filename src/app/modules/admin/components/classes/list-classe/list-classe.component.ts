@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-classe',
@@ -9,6 +10,10 @@ export class ListClasseComponent implements OnInit {
   classes:any;
   ngOnInit(): void {
     this.classes=JSON.parse(localStorage.getItem('classes') || '[]');
+  }
+  constructor(private router: Router) { }
+  routerRedirect() {
+    this.router.navigate(['admin/addClasse'])
   }
   activeDesactive(faire:any,id:number){
     if (faire=="activer") {

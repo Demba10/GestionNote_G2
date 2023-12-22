@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apprenant } from 'src/app/models/apprenant';
 import { Notes } from 'src/app/models/notes';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-notes',
@@ -13,37 +14,84 @@ export class AddNotesComponent implements OnInit {
   apprenants: Apprenant[] = [];
   listeApprenants!: any[];
   selectedEvaluationId: number = -1; // Utilisation d'une valeur par défaut
-  notes: { apprenant: Apprenant, note: number }[] = [];
+  notes!: any[];
   filteredApprenants: Apprenant[] = [];
   lesnotes!: Notes[];
-  note!: number[];
+  note!: number;
+  eval: string = ''
+  idEvalCurrent: number = 0;
+  classeCurrent: any;
+  newList!: any[];
+  noteApp!: any[];
+  currentNote!: any;
+  idAN!: any
+  nameAN!: any;
+  baseText!: string;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
     this.listeEvaluation = JSON.parse(localStorage.getItem("Eval") || '[]');
-    this.listeApprenants = JSON.parse(localStorage.getItem('apprenants') || '[]');
+    this.newList = JSON.parse(localStorage.getItem('apprenants') || '[]');
+    this.notes = JSON.parse(localStorage.getItem('notes') || '[]');
+    this.listeApprenants = JSON.parse(localStorage.getItem('newusers') || '[]') 
   }
 
   onSelectEvaluation() {
-    if (this.selectedEvaluationId !== -1) {
-      this.notes = this.listeApprenants
-        .filter(apprenant => apprenant.id === this.selectedEvaluationId)
-        .map(apprenant => ({ apprenant, note: 0 })); // Initialisez les notes à 0
-    } else {
-      console.error('selectedEvaluationId est -1. Impossible de filtrer les apprenants.');
-    }
+    this.classeCurrent = this.listeEvaluation[this.idEvalCurrent - 1].classe;
+    this.listeApprenants = this.newList.filter(el => el.classe == this.classeCurrent)
+    localStorage.setItem('newusers', JSON.stringify(this.listeApprenants))
   }
 
   attribuerNotes() {
-    let i = 0;
-    for (let i = 0; i < this.listeApprenants.length; i++) {
-      if (this.listeApprenants[i].note < 0 || this.listeApprenants[i].note > 20) {
-        alert('Note invalide champs '+(i+1)) 
-      } else {
-        this.listeApprenants[i].note.push(this.listeApprenants[i].note);
-        localStorage.setItem('apprenants', JSON.stringify(this.listeApprenants))
-      }
+
+    if (this.note > 20 || this.note < 0) {
+      Swal.fire({
+        title: 'error',
+        text: 'La note doit etre compris entre 0 et 20',
+        icon: 'error'
+      })
+    } else {
+      const nt = new Notes(this.notes.length, this.note, this.idAN)
+      this.notes.push(nt);
+      localStorage.setItem('notes', JSON.stringify(this.notes))
+      Swal.fire({
+        title: 'success',
+        text: 'Note ajouter avec succes',
+        icon: 'success'
+      })
     }
+  }
+
+  itemAN(param: any) {
+    this.listeApprenants.forEach(element => {
+      if (element.id == param) {
+        this.idAN = param;
+        this.nameAN = element.prenom + " " + element.nom;
+        this.baseText = "Atrribution de note a ";
+      }
+    });
+  }
+
+  supAN(param: number) {
+    this.notes.forEach(element => {
+      if (element.id == param) {
+        element.note = -1;
+      }
+    });
+    localStorage.setItem('notes', JSON.stringify(this.notes));
+  }
+
+  modAN(param: any) {
+    this.notes.forEach(element => {
+      if (element.id == param) {
+        alert(param)
+        this.idAN = param;
+        this.nameAN = element.prenom + " " + element.nom;
+        this.baseText = "Modification du note de "
+          element.note = this.note;
+        localStorage.setItem('notes', JSON.stringify(this.notes));
+      }
+    });
   }
 }

@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   mail!: string;
   password!: string;
   formateurs!: any[];
+  idCurrent: any;
 
   constructor(private router:Router){
 
@@ -33,9 +34,19 @@ export class LoginComponent implements OnInit {
     else {
       this.formateurs.forEach(element => {
         if (element.mail == this.mail && this.password == 'adminpassword') {
+          this.idCurrent = element.id;
+          localStorage.setItem('idCurrent', JSON.stringify(this.idCurrent))
           this.router.navigate(['formateur']);
-        } 
+        }
       });
+      this.formateurs.forEach(element => {
+        if (element.id == this.idCurrent) {
+          element.isAuth = true;
+        } else {
+          element.isAuth = false;
+        }
+      });
+      localStorage.setItem('professeurs', JSON.stringify(this.formateurs));
     } 
   }
 }
