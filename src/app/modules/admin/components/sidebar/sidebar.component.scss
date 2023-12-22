@@ -76,6 +76,21 @@
 // }
 
 aside {
-  position: static !important;
-  height: 95vh;
+  position: fixed !important;
+  height: 100vh;
+  margin: 0 !important;
+  width: 500px !important;
+  border-radius: 0 !important;
+  background-color: #011627;
 }
+
+.nav-link-text {
+  font-size: 26px;
+  margin: 10px 20px !important;
+}
+.logo {
+  font-size: 45px;
+  text-align: center !important;
+  color: #E43170 !important;
+  margin-bottom: 30px !important;
+} 

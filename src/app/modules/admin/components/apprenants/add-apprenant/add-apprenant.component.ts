@@ -47,6 +47,11 @@ export class AddApprenantComponent implements OnInit {
   }
 
   // la fonctionn qui fait l'ajout au niveau des champts
+
+  lister() {
+    this.router.navigate(['admin/listApprenant'])
+  }
+
   ajouterApprenant() {
     let apprenant;
     if (localStorage.getItem('apprenants') == null || localStorage.getItem('apprenants') == undefined) {

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './modules/admin/components/sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { AddNotesComponent } from './modules/formateur/add-notes/add-notes.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,13 @@ const routes: Routes = [
     path: 'bbb', component: AddNotesComponent
   },
   {
-    path: '', redirectTo: 'login', pathMatch: 'full'
+    path: 'maintenance', component: MaintenanceComponent
+  },
+  {
+    path: '', redirectTo: 'maintenance', pathMatch: 'full'
+  },
+  {
+    path: '', redirectTo: 'maintenance', pathMatch: 'full'
   },
   {
     path: 'admin',

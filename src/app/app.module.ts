@@ -9,6 +9,7 @@ import { AddNotesComponent } from './modules/formateur/add-notes/add-notes.compo
 import { DashboardComponent } from './modules/formateur/dashboard/dashboard.component';
 import { ProgrammeEvalComponent } from './modules/formateur/programme-eval/programme-eval.component';
 import { ListEvalComponent } from './modules/formateur/list-eval/list-eval.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListEvalComponent } from './modules/formateur/list-eval/list-eval.compo
     AddNotesComponent,
     DashboardComponent,
     ProgrammeEvalComponent,
-    ListEvalComponent
+    ListEvalComponent,
+    MaintenanceComponent
   ],
   imports: [
     BrowserModule,
