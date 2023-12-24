@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Apprenant } from '../models/apprenant';
+
 
 @Component({
   selector: 'app-apprenant',
@@ -8,6 +9,7 @@ import { Apprenant } from '../models/apprenant';
 })
 export class ApprenantComponent  implements OnInit{
 
+  @Input()
   apprenant:Apprenant[]=[
     
   ]
